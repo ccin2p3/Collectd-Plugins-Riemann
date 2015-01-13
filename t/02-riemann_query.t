@@ -28,6 +28,10 @@ my $mock_collectd_data = [
 			}
 		]
 	},{
+		service => 'foo',
+		metric_f => 1.3,
+		host => 'plop'
+	},{
 		service => 'cpu-0/cpu-idle',
 		metric_sint64 => 42,
 		host => 'foo',
@@ -44,6 +48,9 @@ my $mock_collectd_data = [
 			},{
 				key => 'plugin_instance',
 				value => '0'
+			},{
+				key => 'foo',
+				value => 'bar'
 			}
 		]
 	}

@@ -7,6 +7,12 @@ use Collectd qw( :all );
 use Collectd::Plugins::Common qw(recurse_config);
 use Riemann::Client;
 use Try::Tiny;
+#use DDP {
+#	deparse => 1,
+#	class => {
+#		expand => 'all'
+#	}
+#};
 
 my %opt = (
 	Server => "127.0.0.1",
@@ -117,7 +123,8 @@ sub my_get {
 		my %plugin;
 		for (qw(type type_instance plugin plugin_instance)) {
 			if ($_) {
-				$plugin{$_} = _get_collectd_attribute($event,$_)
+				my $attr = _get_collectd_attribute($event,$_);
+				$plugin{$_} = $attr if $attr;
 			}
 		}
 		$plugin{type} ||= 'gauge';
@@ -135,7 +142,7 @@ sub my_get {
 			$metric = $event -> {metric_sint64}
 		} else {
 			my $p_s = join(',',%plugin);
-			my_log(LOG_INFO, "get: event `$p_s` has no metric: ignoring");
+			my_log(LOG_DEBUG, "get: event `$p_s` has no metric: ignoring");
 		}
 		_dispatch($host,\%plugin,$metric);
 	}
@@ -167,6 +174,7 @@ sub _get_collectd_attribute ($$) {
 		my_log(LOG_DEBUG, "_get_collectd_attribute: no attributes for event");
 	}
 	my_log(LOG_DEBUG, "_get_collectd_attribute: attribute `$key` not found for event");
+	return
 }
 
 sub _dispatch ($$$) {
