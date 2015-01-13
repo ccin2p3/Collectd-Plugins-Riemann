@@ -4,7 +4,8 @@ author:
   - 'Fabien Wernli <wernli@in2p3.fr>'
 build_requires:
   ExtUtils::MakeMaker: 6.59
-  Test::Collectd::Plugins: 0
+  Test::Collectd::Plugins: '0.1007'
+  Test::MockModule: 0
   Test::More: 0
 configure_requires:
   ExtUtils::MakeMaker: 6.59

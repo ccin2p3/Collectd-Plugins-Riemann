@@ -6,10 +6,10 @@ use Riemann::Client::Protocol;
 #use Test::MockObject::Extends;
 use Test::MockModule;
 
-plan tests => 1;
+plan tests => 2;
 
 diag("Testing $nfound Collectd::Plugins::Riemann::Query plugin");
-#load_ok("Collectd::Plugins::Riemann::Query");
+load_ok("Collectd::Plugins::Riemann::Query");
 my $mock_collectd_data = [
 	{
 		service => 'memory/memory-free',
@@ -48,16 +48,6 @@ my $mock_collectd_data = [
 		]
 	}
 ];
-#my $riemann_client = Test::MockObject::Extends->new('Riemann::Client');
-#$riemann_client -> mock(
-#	query => sub {
-#		Msg -> decode(
-#			Msg -> encode(
-#				{ events => $mock_collectd_data }
-#			)
-#		)
-#	}
-#);
 
 {
 	my $module = Test::MockModule->new('Riemann::Client');
