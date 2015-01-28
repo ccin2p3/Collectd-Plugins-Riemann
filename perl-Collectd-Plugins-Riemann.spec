@@ -4,7 +4,7 @@
 
 Summary: Collectd Riemann plugins
 Name: perl-Collectd-Plugins-Riemann
-Version: 0.2003
+Version: 0.1.0
 Release: 0%{?dist}
 Group: Applications/System
 Packager: Fabien Wernli
@@ -12,18 +12,17 @@ License: GPL+ or Artistic
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch: noarch
 AutoReq: no
-Source: http://search.cpan.org/CPAN/Collectd-Plugins-Riemann-%{version}.tar.gz
+Source: http://search.cpan.org/CPAN/Collectd-Plugins-Riemann-v%{version}.tar.gz
 
 Requires: perl(Collectd)
-Requires: perl(Riemann::Client
-)
+Requires: perl(Riemann::Client)
 BuildRequires: perl(Test::MockModule)
 
 %description
 This package contains the Riemann read plugins
 
 %prep
-%setup -q -n Collectd-Plugins-Riemann-%{version}
+%setup -q -n Collectd-Plugins-Riemann-v%{version}
 
 #------------------------------------------------------------------------------
 # B U I L D

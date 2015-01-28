@@ -14,7 +14,7 @@ requires 'Riemann::Client';
 
 install_share qw(share);
 
-auto_install;
+# auto_install;
 
 WriteAll;
 
