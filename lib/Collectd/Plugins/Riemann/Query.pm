@@ -178,10 +178,10 @@ sub _get_collectd_attribute ($$) {
 }
 
 sub _dispatch ($$$) {
-	my $host = shift or return;
-	my $p = shift or return;
+	my $host = shift;
+	my $p = shift;
 	my %plugin = %$p;
-	my $metric = shift or return;
+	my $metric = shift;
 	$plugin{host} = $host;
 	$plugin{values} = [ $metric ];
 	my $ret = plugin_dispatch_values(\%plugin);

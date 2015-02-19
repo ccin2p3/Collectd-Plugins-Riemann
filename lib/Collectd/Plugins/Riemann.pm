@@ -48,7 +48,7 @@ Collectd, collectd-perl, collectd
 
 =cut
 
-our $VERSION = version->parse('v0.1.0');
+our $VERSION = version->parse('v0.1.1');
 
 1;
 
