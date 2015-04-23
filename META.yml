@@ -26,4 +26,4 @@ requires:
   Collectd: 0
   Riemann::Client: 0
   perl: 5.8.2
-version: '0.001001'
+version: '0.002000'

@@ -71,6 +71,6 @@ sub Collectd::Plugins::Riemann::Query::plugin_get_interval {
 			)
 		}
 	);
-	read_config_ok("Collectd::Plugins::Riemann::Query", "Riemann::Query", "t/data/collectd.conf");
+	read_config_ok("Collectd::Plugins::Riemann::Query", "Riemann::Query", "t/data/collectd-minimal.conf");
 }
 
