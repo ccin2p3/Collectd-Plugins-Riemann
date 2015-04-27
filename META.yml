@@ -9,6 +9,7 @@ build_requires:
   Test::More: 0
 configure_requires:
   ExtUtils::MakeMaker: 6.59
+  version: '0.88'
 distribution_type: module
 dynamic_config: 1
 generated_by: 'Module::Install version 1.14'
@@ -24,6 +25,9 @@ no_index:
     - t
 requires:
   Collectd: 0
+  Collectd::Plugins::Common: 0
+  IPC::Cmd: 0
   Riemann::Client: 0
+  Socket: 0
   perl: 5.8.2
-version: '0.002000'
+version: '0.002001'

@@ -4,7 +4,7 @@
 
 Summary: Collectd Riemann plugins
 Name: perl-Collectd-Plugins-Riemann
-Version: 0.2.0
+Version: 0.2.1
 Release: 0%{?dist}
 Group: Applications/System
 Packager: Fabien Wernli
@@ -16,6 +16,10 @@ Source: http://search.cpan.org/CPAN/Collectd-Plugins-Riemann-v%{version}.tar.gz
 
 Requires: perl(Collectd)
 Requires: perl(Riemann::Client)
+Requires: perl(Collectd::Plugins::Common)
+Requires: perl(version) >= 0.88
+Requires: perl(IPC::Cmd)
+Requires: perl(Socket)
 BuildRequires: perl(Test::MockModule)
 
 %description
