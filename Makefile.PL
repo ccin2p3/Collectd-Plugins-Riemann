@@ -12,7 +12,6 @@ test_requires 'Test::More';
 test_requires 'Test::MockModule';
 test_requires 'Test::Collectd::Plugins' => '0.1007';
 
-requires 'Collectd';
 requires 'Collectd::Plugins::Common';
 requires 'Riemann::Client';
 

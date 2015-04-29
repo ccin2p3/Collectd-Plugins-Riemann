@@ -11,29 +11,6 @@ Collectd::Plugins::Riemann - Collectd plugins for Riemann.
 
 To be used with L<Collectd>.
 
-=over 8
-
-=item From the collectd configfile
-
- <LoadPlugin "perl">
-   Globals true
- </LoadPlugin>
-
- <Plugin "perl">
-   BaseName "Collectd::Plugins"
-   LoadPlugin "Riemann::Query"
-   <Plugin "riemann_query">
-     Host        myriemann
-     Port        5555
-     Protocol    TCP
-     Query       "tagged \"foo\" and service =~ \"bar%\""
-   </Plugin>
- </Plugin>
-
-=back
-
-=head1 SUBROUTINES
-
 Please refer to the L<Collectd> documentation.
 Or C<man collectd-perl>
 
@@ -48,7 +25,7 @@ Collectd, collectd-perl, collectd
 
 =cut
 
-our $VERSION = version->parse('v0.2.1');
+our $VERSION = version->parse('v0.2.2');
 
 1;
 

@@ -8,7 +8,7 @@ use Test::MockModule;
 
 plan tests => 2;
 
-diag("Testing $nfound Collectd::Plugins::Riemann::Query plugin");
+diag("Testing Collectd::Plugins::Riemann::Query plugin");
 load_ok("Collectd::Plugins::Riemann::Query");
 my $mock_collectd_data = [
 	{

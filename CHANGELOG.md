@@ -1,5 +1,9 @@
 #Revision history for Collectd-Plugins-Riemann
 
+## 0.2.2 Wed Apr 29 13:43:30 CEST 2015
+
+* fix documentation
+
 ## 0.2.1 Mon Apr 27 12:40:27 CEST 2015
 
 * add requirements to Makefile: version and Collectd::Plugins::Common
