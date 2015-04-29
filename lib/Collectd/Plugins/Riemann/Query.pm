@@ -217,15 +217,33 @@ PLUGIN: for my $Plugin (@Plugins) {
 		my %plugin;
 		for my $k (qw(Type TypeInstance Plugin PluginInstance)) {
 			if (exists($Plugin->{"${k}From"})) { # metadata from riemann
-				my $attr = _get_riemann_attribute($event,$Plugin->{"${k}From"});
-				$plugin{_plug2cb($k)} = $attr if defined($attr);
+				my $ik = "${k}From";
+				my $attr = _get_riemann_attribute($event,$Plugin->{$ik});
+				if (defined($attr)) {
+					my_log(LOG_DEBUG, "Inferring `$k` using `$ik=$attr` option value for query `$query`.");
+					$plugin{_plug2cb($k)} = $attr
+				} else {
+					my_log(LOG_DEBUG, "Not inferring `$k` using `$ik` option value for query `$query`.");
+				}
 		  } elsif (exists($Plugin->{$k})) { # static metadata
-				$plugin{_plug2cb($k)} = $Plugin->{$k};
+				my $ik = $k;
+				my $v = $Plugin->{$ik};
+				my_log(LOG_DEBUG, "Inferring `$k` using `$ik=$v` option value for query `$query`.");
+				$plugin{_plug2cb($k)} = $v;
 			} elsif (defined($opt{"${k}From"})) {
-				my $attr = _get_riemann_attribute($event,$opt{"${k}From"});
-				$plugin{_plug2cb($k)} = $attr if defined($attr);
+				my $ik = "${k}From";
+				my $attr = _get_riemann_attribute($event,$opt{$ik});
+				if (defined($attr)) {
+					my_log(LOG_DEBUG, "Inferring `$k` using default `$ik=$attr` option value for query `$query`.");
+					$plugin{_plug2cb($k)} = $attr if defined($attr);
+				} else {
+					my_log(LOG_DEBUG, "Not inferring `$k` using default `$ik` option value for query `$query`.");
+				}
 			} elsif (defined($opt{$k})) {
-				$plugin{_plug2cb($k)} = $opt{$k};
+				my $ik = $k;
+				my $v = $opt{$ik};
+				my_log(LOG_DEBUG, "Inferring `$k` using default `$ik=$v` option value for query `$query`.");
+				$plugin{_plug2cb($k)} = $v;
 			} else {
 				my_log(LOG_INFO, "failed to infer `${k}` for query `$query`. Will ignore query results");
 				next PLUGIN
@@ -233,21 +251,21 @@ PLUGIN: for my $Plugin (@Plugins) {
 		}
 		for my $k (qw/Plugin Type/) {
 			unless (defined $plugin{_plug2cb($k)}) {
-				my_log(LOG_INFO, "Key `${k}` is empty for query `$query`. Will ignore query results");
+				my_log(LOG_INFO, "Key `$k` is empty for query `$query`. Will ignore query results");
 				next PLUGIN
 			}
 		}
 		my $ttl = $event -> {ttl};
 		my $interval = plugin_get_interval();
-		if ($ttl && $interval lt $ttl) {
+		if ($ttl && $interval gt $ttl) {
 			my_log(LOG_INFO, "TTL ($ttl) for event returned by query `$query` is smaller than collectd interval ($interval)");
 		}
 		my $metric;
-		if ($event -> {metric_d}) {
+		if (exists $event -> {metric_d}) {
 			$metric = $event -> {metric_d}
-		} elsif ($event -> {metric_f}) {
+		} elsif (exists $event -> {metric_f}) {
 			$metric = $event -> {metric_f}
-		} elsif ($event -> {metric_sint64}) {
+		} elsif (exists $event -> {metric_sint64}) {
 			$metric = $event -> {metric_sint64}
 		} else {
 			my $p_s = join(',',%plugin);
