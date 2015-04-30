@@ -1,5 +1,12 @@
 #Revision history for Collectd-Plugins-Riemann
 
+## 0.2.3 Thu Apr 30 15:38:29 CEST 2015
+
+* Improve references in README
+* Fix test where metric was discarded when == 0
+* Fix interval vs. ttl test
+* Improve debugging
+
 ## 0.2.2 Wed Apr 29 13:43:30 CEST 2015
 
 * fix documentation

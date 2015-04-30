@@ -24,6 +24,7 @@ t/00-load.t
 t/01-load-probes.t
 t/02-riemann_query.t
 t/03-riemann_minimal_query.t
+t/04-zero-metric.t
 t/boilerplate.t
 t/collectd.conf
 t/data/collectd-minimal.conf

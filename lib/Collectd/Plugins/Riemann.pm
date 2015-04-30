@@ -25,7 +25,7 @@ Collectd, collectd-perl, collectd
 
 =cut
 
-our $VERSION = version->parse('v0.2.2');
+our $VERSION = version->parse('v0.2.3');
 
 1;
 

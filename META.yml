@@ -29,4 +29,4 @@ requires:
   Riemann::Client: 0
   Socket: 0
   perl: 5.8.2
-version: '0.002002'
+version: '0.002003'
