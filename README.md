@@ -83,7 +83,11 @@ Or `man collectd-perl`
 
 # SEE ALSO
 
-Collectd, collectd-perl, collectd
+* [collectd](https://github.com/collectd/collectd)
+* [riemann](https://github.com/aphyr/riemann)
+* [Collectd](https://github.com/collectd/collectd/blob/master/bindings/perl/lib/Collectd.pm) perl module
+* [collectd-perl](https://github.com/collectd/collectd/blob/master/src/collectd-perl.pod) manpage
+* [collmann](https://github.com/exoscale/collmann) embedding riemann into collectd
 
 ## INSTALLATION
 
